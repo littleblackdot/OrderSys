@@ -7,6 +7,7 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
     this->setFixedSize(570, 430);
+    this->setWindowTitle("点餐");
 }
 
 Widget::~Widget()

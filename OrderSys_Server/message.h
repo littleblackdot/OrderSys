@@ -11,7 +11,7 @@
 enum ServerAction{
     MENU_SEND, //发送菜单
     SERVER_DISHES, //上菜
-    ORDER_SEND, //发送订单
+    ORDER_SEND, //发送订单的
 };
 
 enum ClientAction{
@@ -20,6 +20,7 @@ enum ClientAction{
     BUSY_DISHES, // 催菜
     REQUEST_MENU, //请求菜单
     REQUEST_ORDER, //请求订单
+    ADD_COMMENT, //添加备注
 };
 
 class Message

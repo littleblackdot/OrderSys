@@ -18,8 +18,8 @@
     <rect>
      <x>10</x>
      <y>40</y>
-     <width>360</width>
-     <height>260</height>
+     <width>371</width>
+     <height>261</height>
     </rect>
    </property>
    <property name="currentIndex">
@@ -34,7 +34,7 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>360</width>
+       <width>371</width>
        <height>231</height>
       </rect>
      </property>
@@ -52,7 +52,7 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>361</width>
+       <width>371</width>
        <height>231</height>
       </rect>
      </property>
@@ -78,7 +78,7 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>110</x>
      <y>310</y>
      <width>80</width>
      <height>24</height>
@@ -91,7 +91,7 @@
   <widget class="QPushButton" name="pushButton_3">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>200</x>
      <y>310</y>
      <width>80</width>
      <height>24</height>
@@ -101,18 +101,60 @@
     <string>提交备注</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QPushButton" name="pushButton_4">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>101</width>
-     <height>21</height>
+     <x>290</x>
+     <y>310</y>
+     <width>80</width>
+     <height>24</height>
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string>催菜</string>
    </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>10</y>
+     <width>321</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

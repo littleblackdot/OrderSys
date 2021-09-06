@@ -20,6 +20,7 @@ enum ClientAction{
     BUSY_DISHES, // 催菜
     REQUEST_MENU, //请求菜单
     REQUEST_ORDER, //请求订单
+    ADD_COMMENT, //添加备注
 };
 
 class Message

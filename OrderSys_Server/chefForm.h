@@ -18,10 +18,14 @@ class ChefForm : public QWidget
 
 public:
     explicit ChefForm(QWidget *parent = nullptr);
+    QByteArray intToByte(int i);
+    int bytesToInt(QByteArray bytes);
     ~ChefForm();
 public slots:
     void updateTime();
-    void dataUpDate();
+    void dataUpDate(int tableId);
+    void sendOrderstoClients(int tableId);
+    void addTableId(int tableId, QTcpSocket* socket);
 private:
     Ui::ChefForm *ui;
     QTimer *timer;

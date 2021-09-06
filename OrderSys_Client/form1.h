@@ -5,6 +5,7 @@
 #include "message.h"
 #include <QTcpSocket>
 #include <QHostAddress>
+#include <QMessageBox>
 #include <vector>
 #define SERVERIPADDR "192.168.124.131"
 #define SERVERPORT 11245
@@ -27,6 +28,7 @@ public:
     void updateDishesStatus(MessageFromServer mess);
     QByteArray  intToByte(int i);
     int bytesToInt(QByteArray bytes);
+    void sendMessToServer(MessageFromClient mess);
 
 private slots:
     void on_pushButton_clicked();
@@ -34,6 +36,8 @@ private slots:
     void on_pushButton_2_clicked();
 
     void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
 
 private:
     Ui::Form1 *ui;
