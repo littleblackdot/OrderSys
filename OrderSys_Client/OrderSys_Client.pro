@@ -38,3 +38,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     ../OrderSys/white.qss
+
+RESOURCES += \
+    others.qrc

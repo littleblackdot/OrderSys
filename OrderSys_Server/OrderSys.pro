@@ -18,33 +18,45 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     DBHelper.cpp \
     User.cpp \
+    adddishform.cpp \
     cashierForm.cpp \
     chefForm.cpp \
     client_tcp.cpp \
+    form.cpp \
     main.cpp \
     managerForm.cpp \
     message.cpp \
+    pwdchangeform.cpp \
     serverThread.cpp \
     server_tcp.cpp \
+    typechangeform.cpp \
     widget.cpp
 
 HEADERS += \
     DBHelper.h \
     Menu.h \
     User.h \
+    adddishform.h \
     cashierForm.h \
     chefForm.h \
     client_tcp.h \
+    form.h \
     managerForm.h \
     message.h \
+    pwdchangeform.h \
     serverThread.h \
     server_tcp.h \
+    typechangeform.h \
     widget.h
 
 FORMS += \
+    adddishform.ui \
     cashierform.ui \
     chefform.ui \
+    form.ui \
     managerform.ui \
+    pwdchangeform.ui \
+    typechangeform.ui \
     widget.ui
 
 TRANSLATIONS += \

@@ -62,6 +62,9 @@ void ChefForm::dataUpDate(int tableId)
     ui->tableWidget->setRowCount(0);
     while(query.next()){
         int rowCount = ui->tableWidget->rowCount();
+        if(3 == query.value(3).toInt() || 1 == query.value(3).toInt()){
+            continue;// 已做的和缺材料的菜不显示在厨师界面
+        }
         ui->tableWidget->insertRow(rowCount);
         for(int i=0; i<ui->tableWidget->columnCount(); ++i){
             QTableWidgetItem *item;
@@ -77,7 +80,7 @@ void ChefForm::dataUpDate(int tableId)
                     item = new QTableWidgetItem(query2.value(0).toString());
                 }
             }else if(3 == i){
-                QString statusStrings[3] = {"待做", "缺菜", "催菜中"};
+                QString statusStrings[4] = {"待做", "缺菜", "催菜中", "已做"};
                 int status = query.value(i).toInt();
                 item = new QTableWidgetItem(statusStrings[status]);
             }else{
@@ -154,4 +157,45 @@ int ChefForm::bytesToInt(QByteArray bytes)
     addr |= ((bytes[2] << 16) & 0x00FF0000);
     addr |= ((bytes[3] << 24) & 0xFF000000);
     return addr;
+}
+
+void ChefForm::on_pushButton_clicked()
+{
+    //上菜
+    int curRow = ui->tableWidget->currentRow();
+    if(curRow >= 0){
+        DBHelper helper;
+        QSqlQuery query(helper.getDB());
+        int orderId = ui->tableWidget->item(curRow, 0)->text().toInt();
+        int tableId = ui->tableWidget->item(curRow, 1)->text().toInt();
+        QString sql = QString("update orders set status = 3 where id = %1 and tableID = %2").arg(orderId).arg(tableId);
+        bool ret = query.exec(sql);
+        if(!ret){
+            QSqlError err = query.lastError();   //得到最近一次的错误信息
+            QString str = QString("错误信息:%1, %2").arg(err.driverText()).arg(err.databaseText());
+            qDebug()<< str << endl;
+        }
+        ui->tableWidget->removeRow(curRow);
+        //qDebug() << "11111" << endl;
+    }
+}
+
+void ChefForm::on_pushButton_2_clicked()
+{
+    //缺菜
+    int curRow = ui->tableWidget->currentRow();
+    if(curRow >= 0){
+        DBHelper helper;
+        QSqlQuery query(helper.getDB());
+        int orderId = ui->tableWidget->item(curRow, 0)->text().toInt();
+        int tableId = ui->tableWidget->item(curRow, 1)->text().toInt();
+        QString sql = QString("update orders set status = 1 where id = %1 and tableID = %2").arg(orderId).arg(tableId);
+        bool ret = query.exec(sql);
+        if(!ret){
+            QSqlError err = query.lastError();   //得到最近一次的错误信息
+            QString str = QString("错误信息:%1, %2").arg(err.driverText()).arg(err.databaseText());
+            qDebug()<< str << endl;
+        }
+        ui->tableWidget->removeRow(curRow);
+    }
 }

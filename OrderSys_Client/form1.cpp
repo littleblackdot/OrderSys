@@ -6,6 +6,10 @@ Form1::Form1(int tableID, QWidget *parent) :
     ui(new Ui::Form1),
     tableID(tableID)
 {
+    QFile qss(":/white.qss");
+    qss.open(QFile::ReadOnly);
+    qApp->setStyleSheet(qss.readAll());
+    qss.close();
     ui->setupUi(this);
     //ui->tabWidget->
     this->setWindowTitle("点菜");

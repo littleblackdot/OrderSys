@@ -26,6 +26,11 @@ public slots:
     void dataUpDate(int tableId);
     void sendOrderstoClients(int tableId);
     void addTableId(int tableId, QTcpSocket* socket);
+private slots:
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
 private:
     Ui::ChefForm *ui;
     QTimer *timer;

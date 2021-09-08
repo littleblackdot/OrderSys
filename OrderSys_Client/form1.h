@@ -6,6 +6,7 @@
 #include <QTcpSocket>
 #include <QHostAddress>
 #include <QMessageBox>
+#include <QFile>
 #include <vector>
 #define SERVERIPADDR "192.168.124.131"
 #define SERVERPORT 11245

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "form1.h"
+#include <QFile>
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
 QT_END_NAMESPACE

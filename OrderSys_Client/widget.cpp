@@ -5,6 +5,10 @@ Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
+    QFile qss(":/white.qss");
+    qss.open(QFile::ReadOnly);
+    qApp->setStyleSheet(qss.readAll());
+    qss.close();
     ui->setupUi(this);
     this->setFixedSize(570, 430);
     this->setWindowTitle("点餐");

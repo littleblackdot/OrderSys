@@ -66,7 +66,7 @@ void Widget::on_pushButton_clicked()
             break;
         }
         case 1: {
-            CashierForm *form = new CashierForm;
+            CashierForm *form = new CashierForm(user);
             form->show();
             this->close();
             break;
