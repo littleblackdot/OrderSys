@@ -27,6 +27,7 @@ ChefForm::ChefForm(QWidget *parent) :
         ServerThread *thread = new ServerThread(socket);
         connect(thread, SIGNAL(requestReport(int)), this, SLOT(dataUpDate(int)), Qt::QueuedConnection);//信号函数不能带变量名
         connect(thread, SIGNAL(tableIdReport(int , QTcpSocket*)), this, SLOT(addTableId(int , QTcpSocket*)), Qt::QueuedConnection);
+        connect(thread, SIGNAL(closeReport(QTcpSocket*, int)), this, SLOT(remove(removeSocket(QTcpSocket*, int))), Qt::QueuedConnection);
         thread->start();
     });//每次有连接请求，调用lambda表达式， lamdba表达式执行完，连接才建立......., lamdba中不能对连接write， 不然只能读到空值。
     this->move(600, 400);
@@ -51,7 +52,7 @@ void ChefForm::dataUpDate(int tableId)
     DBHelper helper;
     QSqlQuery query(helper.getDB());
     QSqlQuery query2(helper.getDB());
-    QString sql("select *from orders");
+    QString sql("select * from orders");
     query.exec(sql);
     bool ret = query.exec("select * from orders");
     if(!ret){
@@ -137,6 +138,11 @@ void ChefForm::sendOrderstoClients(int tableId)
 void ChefForm::addTableId(int tableId, QTcpSocket *socket)
 {
     server.addSocket(tableId, socket);
+}
+
+void ChefForm::removeSocket(QTcpSocket *socket, int tableid)
+{
+
 }
 
 QByteArray ChefForm::intToByte(int i)

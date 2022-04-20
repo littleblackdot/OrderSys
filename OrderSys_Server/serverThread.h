@@ -24,12 +24,14 @@ public:
     void addCommentTask(MessageFromClient mess);
     QByteArray  intToByte(int i);
     int bytesToInt(QByteArray bytes);
+
 signals:
     void tableIdReport(int tableId, QTcpSocket* socket);
     void requestReport(int tableId);
+    void closeReport(QTcpSocket *socket, int tableid);
 private:
     QTcpSocket *socket;
-
+    int tableid;
     DBHelper helper;
 };
 

@@ -51,6 +51,10 @@ Form1::Form1(int tableID, QWidget *parent) :
                     }
                 }
             });
+    connect(socket, &QTcpSocket::disconnected,
+            [&](){
+            socket->close();
+    });
     MessageFromClient mess;
     mess.setAction(REQUEST_MENU);
     sendMessToServer(mess);

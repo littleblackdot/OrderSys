@@ -7,6 +7,11 @@ ServerThread::ServerThread(QTcpSocket *socket): socket(socket)
 
 void ServerThread::run()
 {
+    connect(socket, &QTcpSocket::disconnected,
+            [&](){
+        socket->close();
+        emit closeReport(socket, tableid);
+    });
     connect(socket, &QTcpSocket::readyRead,
             [&](){
                 while(socket->bytesAvailable() >0 ){
@@ -147,6 +152,7 @@ void ServerThread::requestOrderTask(MessageFromClient mess)
     QSqlQuery query(helper.getDB());
     QSqlQuery query2(helper.getDB());
     QString sql = QString("select * from orders where tableID = %1").arg(mess.getTableId());
+    tableid = mess.getTableId();
     MessageFromServer messToC;
     messToC.setAction(ORDER_SEND);
     bool ret = query.exec(sql);

@@ -8,7 +8,7 @@
 #include <QMessageBox>
 #include <QFile>
 #include <vector>
-#define SERVERIPADDR "192.168.124.131"
+#define SERVERIPADDR "192.168.200.128"
 #define SERVERPORT 11245
 
 using namespace std;

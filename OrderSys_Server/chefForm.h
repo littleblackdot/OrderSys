@@ -26,6 +26,7 @@ public slots:
     void dataUpDate(int tableId);
     void sendOrderstoClients(int tableId);
     void addTableId(int tableId, QTcpSocket* socket);
+    void removeSocket(QTcpSocket* socket, int tableid);
 private slots:
     void on_pushButton_clicked();
 

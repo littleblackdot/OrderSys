@@ -144,10 +144,11 @@ void CashierForm::on_pushButton_2_clicked()
                 .arg(query.value(2).toInt())
                 .arg(query.value(3).toInt())
                 .arg(cashier.getName());
+        qDebug()<<billId;
         ret = query2.exec(sql);
         if(!ret){
             QSqlError err = query2.lastError();   //得到最近一次的错误信息
-            QString str = QString("错误信息:%1, %2").arg(err.driverText()).arg(err.databaseText());
+            QString str = QString("错误信息:%1, %2--insert").arg(err.driverText()).arg(err.databaseText());
             qDebug()<< str << endl;
         }
         sql = QString("delete from orders where tableID = %1 and dishID = %2")
